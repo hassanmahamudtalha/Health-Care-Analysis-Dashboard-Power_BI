@@ -25,3 +25,61 @@ The healthcare dataset includes patient info across multiple departments and ser
 
 https://github.com/user-attachments/assets/b1c97d53-23ee-4318-a412-fe1ee5f241bb
 
+
+## Some calculation by DAX
+
+- date = 
+
+ADDCOLUMNS(
+    CALENDARAUTO(5),
+    "Year", YEAR([Date]),
+    "date of months", DAY([Date]),
+    "Months",FORMAT([Date],"mmm"),
+    "Months Number", MONTH([Date]),
+    "Day", FORMAT([Date],"ddd"),
+    "day number" , WEEKDAY([Date]),
+    "Quatar", "Q-"& FORMAT([Date],"q"),
+    "Day type", IF(WEEKDAY([Date])=1 || WEEKDAY([Date])=7, "Weekend","Week day")
+)
+
+- lenth of stay = IF(DATEDIFF(visits[Admitted Date],visits[Discharge Date],DAY) > 0,DATEDIFF(visits[Admitted Date],visits[Discharge Date],DAY),0)
+
+- % deperment = DIVIDE([total billing amount],
+                        CALCULATE([total billing amount],ALL(departments[Department])))
+
+- active colume name = SELECTEDVALUE(departments[Department])
+
+- blank = 0
+
+- total bill by % = 
+    DIVIDE([total billing amount],
+        CALCULATE([total billing amount],ALL(procedures[Procedure])))
+
+- total Bill from pocket = [total billing amount] - [total Insurance Coverage]
+
+- total billing amount = ([total rent of room]+[total Medical cost]+[total Treatment Cost])- [total Insurance Coverage]
+
+- total Insurance Coverage = SUM(visits[Insurance Coverage])
+
+- total Medical cost = SUM(visits[Medication Cost] )
+
+- total patients = DISTINCTCOUNT(patients[Patient ID])
+
+- total rent of room = SUMX(visits,visits[lenth of stay] * visits[Room Charges(daily rate)])
+
+- total Treatment Cost = SUM(visits[Treatment Cost])
+
+- Avg Bill from Pocket = [total Bill from pocket]/[total patients]
+
+- Avg Billing = DIVIDE([total billing amount],[total patients])
+
+- Avg Insurance = AVERAGE(visits[Insurance Coverage])
+
+- Avg Medical cost = AVERAGE(visits[Medication Cost])
+
+- Avg Rent of room = DIVIDE([total rent of room],[total patients])
+
+- Avg Treatment = AVERAGE(visits[Treatment Cost])
+
+
+
