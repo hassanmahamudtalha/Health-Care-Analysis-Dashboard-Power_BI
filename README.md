@@ -2,17 +2,17 @@
 The healthcare dataset includes patient info across multiple departments and services. It tracks metrics like appointment attendance, treatment success rates, costs, and resource utilization. It also covers patient demographics, satisfaction, health outcomes, and factors influencing service efficiency and patient care quality.
 
 ## Questions :
-1.Billing Amount
-2.Medication Cost
-3.Treatment Cost
-4.Total Insurance
-4.Room Charges
-5.Out of Pocket
-6.calculate the average for each of the KPI's
-7.Analyze the total Billing Amount By State and city
-8.Total Billing Amount by Procedure with the percentage of Grand Total
-9.Total Billing Amount by Diagnosis and service type
-10.Total Billing Amount by Department with Pct of Grand Total
+  - Billing Amount
+  - Medication Cost
+  - Treatment Cost
+  - Total Insurance
+  - Room Charges
+  - Out of Pocket
+  - calculate the average for each of the KPI's
+  - Analyze the total Billing Amount By State and city
+  - Total Billing Amount by Procedure with the percentage of Grand Total
+  - Total Billing Amount by Diagnosis and service type
+  - Total Billing Amount by Department with Pct of Grand Total
 
 ## Process_Steps :
 1. Cleaning data in power Query 
